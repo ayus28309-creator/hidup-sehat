@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidup Sehat - Mulai Hari Ini!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header/Navigation */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .cta-button {
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .hero-image {
+            margin-top: 40px;
+            animation: fadeInUp 0.8s ease 0.6s backwards;
+        }
+
+        .hero-image svg {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+        }
+
+        /* Articles Section */
+        .articles {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .article-content {
+            padding: 25px;
+        }
+
+        .article-content h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .article-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .read-more {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .read-more:hover {
+            opacity: 0.9;
+        }
+
+        /* Interactive Features */
+        .features {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .feature-box {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .feature-box h3 {
+            color: #667eea;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .calculate-btn,
+        .reminder-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            width: 100%;
+            transition: transform 0.3s;
+        }
+
+        .calculate-btn:hover,
+        .reminder-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            display: none;
+        }
+
+        .result.show {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .result h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .reminder-status {
+            margin-top: 15px;
+            padding: 15px;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .reminder-status.show {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        .creator {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                🌿 Hidup Sehat
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#articles">Artikel</a></li>
+                <li><a href="#features">Fitur</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Mulai Hidup Sehatmu Hari Ini!</h1>
+            <p>Temukan inspirasi, tips, dan panduan untuk hidup lebih seimbang dan bahagia.</p>
+            <button class="cta-button" onclick="scrollToArticles()">Jelajahi Tips Sehat</button>
+            
+            <div class="hero-image">
+                <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Ilustrasi orang berolahraga -->
+                    <circle cx="250" cy="150" r="40" fill="#FFE5B4"/>
+                    <ellipse cx="250" cy="220" rx="50" ry="70" fill="#4CAF50"/>
+                    <line x1="200" y1="200" x2="170" y2="250" stroke="#FFE5B4" stroke-width="8" stroke-linecap="round"/>
+                    <line x1="300" y1="200" x2="330" y2="170" stroke="#FFE5B4" stroke-width="8" stroke-linecap="round"/>
+                    <line x1="250" y1="290" x2="230" y2="350" stroke="#FFE5B4" stroke-width="8" stroke-linecap="round"/>
+                    <line x1="250" y1="290" x2="270" y2="350" stroke="#FFE5B4" stroke-width="8" stroke-linecap="round"/>
+                    
+                    <!-- Dumbbell -->
+                    <rect x="320" y="165" width="30" height="8" fill="#666" rx="4"/>
+                    <circle cx="320" cy="169" r="8" fill="#666"/>
+                    <circle cx="350" cy="169" r="8" fill="#666"/>
+                    
+                    <!-- Sayuran -->
+                    <circle cx="100" cy="300" r="25" fill="#FF6B6B"/>
+                    <circle cx="140" cy="310" r="20" fill="#4ECDC4"/>
+                    <circle cx="120" cy="340" r="22" fill="#95E1D3"/>
+                    
+                    <!-- Buah -->
+                    <circle cx="380" cy="290" r="28" fill="#FFA07A"/>
+                    <circle cx="420" cy="305" r="25" fill="#FFD93D"/>
+                    <ellipse cx="400" cy="330" rx="30" ry="25" fill="#6BCB77"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section id="articles" class="articles">
+        <div class="container">
+            <h2 class="section-title">📚 Artikel Kesehatan</h2>
+            <div class="articles-grid">
+                <!-- Article 1 -->
+                <div class="article-card">
+                    <div class="article-image">🌅</div>
+                    <div class="article-content">
+                        <h3>5 Kebiasaan Pagi yang Menyehatkan</h3>
+                        <p>Mulai hari Anda dengan rutinitas pagi yang membangkitkan energi dan semangat.</p>
+                        <button class="read-more" onclick="showArticle(1)">Baca Selengkapnya</button>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="article-card">
+                    <div class="article-image">🥗</div>
+                    <div class="article-content">
+                        <h3>Rahasia Pola Makan Seimbang</h3>
+                        <p>Pelajari cara mengatur nutrisi harian untuk tubuh yang lebih sehat dan berenergi.</p>
+                        <button class="read-more" onclick="showArticle(2)">Baca Selengkapnya</button>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="article-card">
+                    <div class="article-image">🧘</div>
+                    <div class="article-content">
+                        <h3>Cara Sederhana Menjaga Kesehatan Mental</h3>
+                        <p>Tips praktis untuk mengelola stres dan menjaga keseimbangan emosional Anda.</p>
+                        <button class="read-more" onclick="showArticle(3)">Baca Selengkapnya</button>
+                    </div>
+                </div>
+
+                <!-- Article 4 -->
+                <div class="article-card">
+                    <div class="article-image">💪</div>
+                    <div class="article-content">
+                        <h3>Olahraga 15 Menit untuk Pemula</h3>
+                        <p>Rutinitas olahraga singkat yang bisa dilakukan di rumah tanpa alat khusus.</p>
+                        <button class="read-more" onclick="showArticle(4)">Baca Selengkapnya</button>
+                    </div>
+                </div>
+
+                <!-- Article 5 -->
+                <div class="article-card">
+                    <div class="article-image">😴</div>
+                    <div class="article-content">
+                        <h3>Pentingnya Tidur Berkualitas</h3>
+                        <p>Rahasia mendapatkan tidur yang nyenyak untuk pemulihan tubuh optimal.</p>
+                        <button class="read-more" onclick="showArticle(5)">Baca Selengkapnya</button>
+                    </div>
+                </div>
+
+                <!-- Article 6 -->
+                <div class="article-card">
+                    <div class="article-image">💧</div>
+                    <div class="article-content">
+                        <h3>Manfaat Luar Biasa Air Putih</h3>
+                        <p>Kenapa air putih adalah kunci utama kesehatan dan cara mencukupi kebutuhannya.</p>
+                        <button class="read-more" onclick="showArticle(6)">Baca Selengkapnya</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Features -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">🛠️ Fitur Interaktif</h2>
+            <div class="features-grid">
+                <!-- Calorie Calculator -->
+                <div class="feature-box">
+                    <h3>🔢 Kalkulator Kalori</h3>
+                    <div class="input-group">
+                        <label for="age">Usia (tahun)</label>
+                        <input type="number" id="age" placeholder="Contoh: 25">
+                    </div>
+                    <div class="input-group">
+                        <label for="gender">Jenis Kelamin</label>
+                        <select id="gender">
+                            <option value="">Pilih</option>
+                            <option value="male">Laki-laki</option>
+                            <option value="female">Perempuan</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="weight">Berat Badan (kg)</label>
+                        <input type="number" id="weight" placeholder="Contoh: 65">
+                    </div>
+                    <div class="input-group">
+                        <label for="height">Tinggi Badan (cm)</label>
+                        <input type="number" id="height" placeholder="Contoh: 170">
+                    </div>
+                    <div class="input-group">
+                        <label for="activity">Tingkat Aktivitas</label>
+                        <select id="activity">
+                            <option value="">Pilih</option>
+                            <option value="1.2">Sangat Ringan (tidak olahraga)</option>
+                            <option value="1.375">Ringan (olahraga 1-3 hari/minggu)</option>
+                            <option value="1.55">Sedang (olahraga 3-5 hari/minggu)</option>
+                            <option value="1.725">Berat (olahraga 6-7 hari/minggu)</option>
+                            <option value="1.9">Sangat Berat (atlet)</option>
+                        </select>
+                    </div>
+                    <button class="calculate-btn" onclick="calculateCalories()">Hitung Kalori</button>
+                    <div class="result" id="calorieResult">
+                        <h4>Kebutuhan Kalori Harian Anda:</h4>
+                        <p id="calorieValue"></p>
+                    </div>
+                </div>
+
+                <!-- Water Reminder -->
+                <div class="feature-box">
+                    <h3>💧 Pengingat Minum Air</h3>
+                    <p style="margin-bottom: 20px; color: #666;">
+                        Atur pengingat untuk minum air putih secara teratur agar tubuh tetap terhidrasi dengan baik.
+                    </p>
+                    <div class="input-group">
+                        <label for="reminderInterval">Interval Pengingat (menit)</label>
+                        <select id="reminderInterval">
+                            <option value="30">Setiap 30 menit</option>
+                            <option value="60">Setiap 1 jam</option>
+                            <option value="90">Setiap 1.5 jam</option>
+                            <option value="120">Setiap 2 jam</option>
+                        </select>
+                    </div>
+                    <button class="reminder-btn" onclick="setWaterReminder()">Aktifkan Pengingat</button>
+                    <div class="reminder-status" id="reminderStatus">
+                        <strong>✅ Pengingat Aktif!</strong><br>
+                        <span id="reminderMessage"></span>
+                    </div>
+                    <div style="margin-top: 20px; padding: 20px; background: white; border-radius: 10px;">
+                        <h4 style="color: #667eea; margin-bottom: 10px;">💡 Tips Hidrasi:</h4>
+                        <ul style="color: #666; padding-left: 20px;">
+                            <li>Minum 8 gelas air per hari (±2 liter)</li>
+                            <li>Mulai hari dengan segelas air putih</li>
+                            <li>Bawa botol air kemana-mana</li>
+                            <li>Minum sebelum merasa haus</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>🌿 Hidup Sehat - Mulai Perjalanan Sehat Anda</p>
+        <p>Dibuat dengan ❤️ oleh <span class="creator">Icha Lhutfiah</span></p>
+        <p style="font-size: 0.9rem; opacity: 0.8;">© 2024 - Semua Hak Dilindungi</p>
+    </footer>
+
+    <script>
+        // Scroll to Articles
+        function scrollToArticles() {
+            document.getElementById('articles').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Show Article Detail
+        function showArticle(articleId) {
+            const articles = {
+                1: {
+                    title: "5 Kebiasaan Pagi yang Menyehatkan",
+                    content: "1. Minum air putih setelah bangun\n2. Peregangan ringan\n3. Sarapan bergizi\n4. Meditasi 5 menit\n5. Paparan sinar matahari pagi"
+                },
+                2: {
+                    title: "Rahasia Pola Makan Seimbang",
+                    content: "Konsumsi karbohidrat kompleks, protein berkualitas, lemak sehat, sayur-sayuran, dan buah-buahan dalam porsi seimbang."
+                },
+                3: {
+                    title: "Cara Sederhana Menjaga Kesehatan Mental",
+                    content: "Latih mindfulness, jaga hubungan sosial, olahraga teratur, tidur cukup, dan jangan ragu mencari bantuan profesional."
+                },
+                4: {
+                    title: "Olahraga 15 Menit untuk Pemula",
+                    content: "Jumping jacks, squat, push-up, plank, dan jogging di tempat. Lakukan masing-masing 3 menit."
+                },
+                5: {
+                    title: "Pentingnya Tidur Berkualitas",
+                    content: "Tidur 7-9 jam, hindari gadget sebelum tidur, ciptakan suasana kamar yang nyaman, dan jaga rutinitas tidur konsisten."
+                },
+                6: {
+                    title: "Manfaat Luar Biasa Air Putih",
+                    content: "Meningkatkan metabolisme, membersihkan racun, menjaga kesehatan kulit, melancarkan pencernaan, dan meningkatkan konsentrasi."
+                }
+            };
+
+            const article = articles[articleId];
+            alert(`${article.title}\n\n${article.content}\n\n💡 Artikel lengkap akan segera tersedia!`);
+        }
+
+        // Calculate Calories
+        function calculateCalories() {
+            const age = document.getElementById('age').value;
+            const gender = document.getElementById('gender').value;
+            const weight = document.getElementById('weight').value;
+            const height = document.getElementById('height').value;
+            const activity = document.getElementById('activity').value;
+
+            if (!age || !gender || !weight || !height || !activity) {
+                alert('⚠️ Mohon isi semua data!');
+                return;
+            }
+
+            // Rumus Harris-Benedict
+            let bmr;
+            if (gender === 'male') {
+                bmr = 66 + (13.7 * weight) + (5 * height) - (6.8 * age);
+            } else {
+                bmr = 655 + (9.6 * weight) + (1.8 * height) - (4.7 * age);
+            }
+
+            const tdee = Math.round(bmr * parseFloat(activity));
+
+            document.getElementById('calorieValue').innerHTML = `
+                <strong style="font-size: 2rem; color: #667eea;">${tdee} kkal</strong><br>
+                <span style="color: #666;">
+                    BMR Anda: ${Math.round(bmr)} kkal<br><br>
+                    <strong>Rekomendasi:</strong><br>
+                    • Maintain: ${tdee} kkal/hari<br>
+                    • Turun berat: ${tdee - 500} kkal/hari<br>
+                    • Naik berat: ${tdee + 500} kkal/hari
+                </span>
+            `;
+            document.getElementById('calorieResult').classList.add('show');
+        }
+
+        // Water Reminder
+        let reminderInterval;
+        function setWaterReminder() {
+            const interval = document.getElementById('reminderInterval').value;
+            
+            // Clear existing reminder
+            if (reminderInterval) {
+                clearInterval(reminderInterval);
+            }
+
+            // Set new reminder
+            reminderInterval = setInterval(() => {
+                if (Notification.permission === 'granted') {
+                    new Notification('💧 Waktunya Minum Air!', {
+                        body: 'Jangan lupa minum air putih untuk menjaga kesehatan Anda.',
+                        icon: '💧'
+                    });
+                } else {
+                    alert('💧 Waktunya Minum Air!\n\nJangan lupa minum air putih untuk menjaga kesehatan Anda.');
+                }
+            }, interval * 60 * 1000);
+
+            // Request notification permission
+            if ('Notification' in window && Notification.permission !== 'granted') {
+                Notification.requestPermission();
+            }
+
+            // Show status
+            const intervalText = interval >= 60 ? `${interval/60} jam` : `${interval} menit`;
+            document.getElementById('reminderMessage').textContent = 
+                `Pengingat akan muncul setiap ${intervalText}. Tetap terhidrasi! 💪`;
+            document.getElementById('reminderStatus').classList.add('show');
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
